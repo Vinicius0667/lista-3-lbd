@@ -1,0 +1,13 @@
+services:
+  postgres_db:
+      name: postgres_views
+      image: postgres:14.25-alpine3.24
+      ports:
+        - 64000:5432
+      volumes:
+        - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+        - ./data:/var/lib/postgresql
+      environment:
+        - POSTGRES_USER=test
+        - POSTGRES_PASSWORD=test
+        - POSTGRES_DB=lbd
